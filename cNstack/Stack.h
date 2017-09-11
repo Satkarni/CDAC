@@ -37,8 +37,8 @@ class Stack
             int max = (j+1)*(SIZE+1)/div;
             if(j == 0)
             {
-                min = -1;
-                max = (SIZE-1)/div;
+                min = 0;
+                max = (SIZE+1)/div;
             }
             if(j == div-1)
                 max = SIZE;
