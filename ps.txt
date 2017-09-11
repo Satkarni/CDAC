@@ -1,0 +1,187 @@
+  PID  PPID CMD
+    1     0 /usr/lib/systemd/systemd --switched-root --system --deserialize 19
+    2     0 [kthreadd]
+    3     2 [ksoftirqd/0]
+    5     2 [kworker/0:0H]
+    7     2 [rcuc/0]
+    8     2 [rcub/0]
+    9     2 [rcu_preempt]
+   10     2 [rcuop/0]
+   11     2 [rcuop/1]
+   12     2 [rcuop/2]
+   13     2 [rcuop/3]
+   14     2 [rcuop/4]
+   15     2 [rcuop/5]
+   16     2 [rcuop/6]
+   17     2 [rcuop/7]
+   18     2 [rcu_sched]
+   19     2 [rcuos/0]
+   20     2 [rcuos/1]
+   21     2 [rcuos/2]
+   22     2 [rcuos/3]
+   23     2 [rcuos/4]
+   24     2 [rcuos/5]
+   25     2 [rcuos/6]
+   26     2 [rcuos/7]
+   27     2 [rcu_bh]
+   28     2 [rcuob/0]
+   29     2 [rcuob/1]
+   30     2 [rcuob/2]
+   31     2 [rcuob/3]
+   32     2 [rcuob/4]
+   33     2 [rcuob/5]
+   34     2 [rcuob/6]
+   35     2 [rcuob/7]
+   36     2 [migration/0]
+   37     2 [watchdog/0]
+   38     2 [watchdog/1]
+   39     2 [migration/1]
+   40     2 [rcuc/1]
+   41     2 [ksoftirqd/1]
+   43     2 [kworker/1:0H]
+   44     2 [khelper]
+   45     2 [kdevtmpfs]
+   46     2 [netns]
+   47     2 [khungtaskd]
+   48     2 [writeback]
+   49     2 [ksmd]
+   50     2 [khugepaged]
+   51     2 [crypto]
+   52     2 [kintegrityd]
+   53     2 [bioset]
+   54     2 [kblockd]
+   55     2 [ata_sff]
+   56     2 [khubd]
+   59     2 [kswapd0]
+   60     2 [fsnotify_mark]
+   67     2 [kthrotld]
+   68     2 [kpsmoused]
+   70     2 [ipv6_addrconf]
+   71     2 [deferwq]
+  107     2 [kworker/0:2]
+  114     2 [kauditd]
+  213     2 [scsi_eh_0]
+  214     2 [scsi_tmf_0]
+  215     2 [scsi_eh_1]
+  216     2 [scsi_tmf_1]
+  227     2 [scsi_eh_2]
+  228     2 [scsi_tmf_2]
+  229     2 [scsi_eh_3]
+  230     2 [scsi_tmf_3]
+  232     2 [scsi_eh_4]
+  233     2 [scsi_tmf_4]
+  234     2 [scsi_eh_5]
+  235     2 [scsi_tmf_5]
+  238     2 [kworker/1:1H]
+  244     2 [kworker/0:1H]
+  270     2 [jbd2/sda6-8]
+  271     2 [ext4-rsv-conver]
+  353     1 /usr/lib/systemd/systemd-journald
+  364     2 [kworker/1:3]
+  365     1 /sbin/lvmetad
+  366     1 /sbin/dmeventd
+  383     1 /usr/lib/systemd/systemd-udevd
+  401     2 [irq/43-mei_me]
+  414     1 /usr/sbin/haveged -w 1024 -v 0 -F
+  415     2 [cfg80211]
+  416     2 [kvm-irqfd-clean]
+  427     2 [hd-audio0]
+  471     1 /sbin/auditd -n
+  647     1 /usr/sbin/mcelog --ignorenodev --daemon --foreground
+  648     1 avahi-daemon: running [linux-7up5.local]
+  650     1 /usr/sbin/wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -u -f /var/log/wpa_supplicant.log
+  651     1 /usr/sbin/irqbalance --foreground
+  653     1 /usr/sbin/ModemManager
+  655     1 /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+  659     1 /usr/sbin/nscd
+  663     1 /sbin/agetty --noclear tty1 linux
+  719     1 /usr/lib/polkit-1/polkitd --no-debug
+  731     1 /usr/sbin/NetworkManager --no-daemon
+  732     1 /usr/lib/systemd/systemd-logind
+  752     1 /usr/sbin/gdm
+  762   752 /usr/bin/Xorg :0 -background none -noreset -verbose 3 -logfile /dev/null -auth /run/gdm/auth-for-gdm-OlWezy/database -seat seat0 -nolisten tcp vt7
+  763     1 /usr/lib/accounts-daemon
+  773     1 /usr/sbin/cupsd -f
+  948     1 /usr/lib/postfix/master -w
+  957   948 pickup -l -t fifo -u
+  958   948 qmgr -l -t fifo -u
+  976     1 /usr/sbin/cron -n
+  980     1 /usr/lib/systemd/systemd --user
+  981   980 (sd-pam)
+ 1010     1 /usr/lib/upower/upowerd
+ 1049     1 /usr/lib/colord
+ 1053     1 /usr/lib/rtkit/rtkit-daemon
+ 1060     1 /usr/lib/bluetooth/bluetoothd
+ 1118     1 /usr/lib/udisks2/udisksd --no-debug
+ 1155   752 gdm-session-worker [pam/gdm-password]
+ 1159     1 /usr/lib/systemd/systemd --user
+ 1160  1159 (sd-pam)
+ 1164     1 /usr/bin/gnome-keyring-daemon --daemonize --login
+ 1176     1 ibus-daemon --xim --panel disable
+ 1179  1176 /usr/lib64/ibus/ibus-dconf
+ 1181     1 /usr/lib64/ibus/ibus-x11 --kill-daemon
+ 1186  1155 /usr/bin/gnome-session
+ 1243     1 dbus-launch --autolaunch=74fc18841ff54a7f8e09f6b58d4bad53 --binary-syntax --close-stderr
+ 1244     1 /bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+ 1254   731 /sbin/dhclient -d -sf /usr/lib/nm-dhcp-helper -pf /var/run/dhclient-wlp3s2.pid -lf /var/lib/NetworkManager/dhclient-3e0ed6bd-d0e4-4adb-8976-1593a0a83e56-wlp3s2.lease -cf /var/lib/NetworkManager/dhclient-wlp3s2.conf wlp3s2
+ 1258     1 /usr/lib/GConf/2/gconfd-2
+ 1415     1 /usr/lib/dconf-service
+ 1458  1186 /usr/bin/ssh-agent /usr/bin/gpg-agent --sh --daemon --keep-display --write-env-file /home/dac/.gnupg/agent.info-linux-7up5:0 /etc/X11/xinit/xinitrc
+ 1459  1186 /usr/bin/gpg-agent --sh --daemon --keep-display --write-env-file /home/dac/.gnupg/agent.info-linux-7up5:0 /etc/X11/xinit/xinitrc
+ 1462     1 /usr/lib/at-spi2/at-spi-bus-launcher
+ 1466  1462 /bin/dbus-daemon --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+ 1469     1 /usr/lib/at-spi2/at-spi2-registryd --use-gnome-session
+ 1473     1 /usr/lib/gvfs/gvfsd
+ 1477     1 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+ 1489  1186 /usr/lib/gnome-settings-daemon-3.0/gnome-settings-daemon
+ 1506     1 /usr/bin/pulseaudio --start
+ 1513  1506 /usr/lib/pulse/gconf-helper
+ 1522  1186 /usr/bin/gnome-shell
+ 1524     1 /usr/lib/gnome-settings-daemon-3.0/gsd-printer
+ 1536     1 /usr/lib/gnome-shell/gnome-shell-calendar-server
+ 1542     1 /usr/lib/evolution-data-server/evolution-source-registry
+ 1548     1 /usr/lib/goa-daemon
+ 1549  1522 ibus-daemon --xim --panel disable
+ 1554  1549 /usr/lib64/ibus/ibus-dconf
+ 1556     1 /usr/lib64/ibus/ibus-x11 --kill-daemon
+ 1568     1 /usr/lib/mission-control-5
+ 1577     1 /usr/lib/caribou
+ 1579     1 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+ 1585     1 /usr/lib/gvfs/gvfs-goa-volume-monitor
+ 1592     1 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+ 1596     1 /usr/lib/gvfs/gvfs-afc-volume-monitor
+ 1601     1 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+ 1604  1186 /usr/bin/gnome-software --gapplication-service
+ 1605  1186 /usr/lib/deja-dup/deja-dup-monitor
+ 1610  1186 /usr/lib/tracker-extract
+ 1616  1186 /usr/lib/tracker-miner-fs
+ 1621  1186 nm-applet
+ 1623     1 /usr/lib/tracker-store
+ 1625  1186 /usr/lib/evolution/3.12/evolution-alarm-notify
+ 1629  1186 /usr/lib/tracker-miner-apps
+ 1631  1186 /usr/lib/tracker-miner-user-guides
+ 1651     1 /usr/lib/evolution-data-server/evolution-calendar-factory
+ 1698  1549 /usr/lib64/ibus/ibus-engine-simple
+ 1700     1 /usr/lib/gvfs/gvfsd-metadata
+ 1879     1 /usr/bin/nautilus --gapplication-service
+ 1886     1 /usr/lib/gvfs/gvfsd-trash --spawner :1.10 /org/gtk/gvfs/exec_spaw/0
+ 1897     1 /usr/lib/gvfs/gvfsd-burn --spawner :1.10 /org/gtk/gvfs/exec_spaw/1
+ 1904     1 /usr/lib64/libreoffice/program/oosplash --impress file:///home/dac/Documents/DAC_CPP_DS_AUG%2017/Lectures/CPPSlides/11_STL.ppt
+ 1922  1904 /usr/lib64/libreoffice/program/soffice.bin --impress file:///home/dac/Documents/DAC_CPP_DS_AUG%2017/Lectures/CPPSlides/11_STL.ppt --splash-pipe=5
+ 1955     1 /usr/lib/gnome-terminal-server
+ 1958  1955 gnome-pty-helper
+ 1959  1955 bash
+ 2004     2 [kworker/u16:0]
+ 2029  1955 [bash] <defunct>
+ 2072     2 [kworker/1:0]
+ 2102  1522 /usr/lib64/firefox/firefox
+ 2137  2102 /usr/lib/libproxy-0.4.11/pxgsettings org.gnome.system.proxy org.gnome.system.proxy.http org.gnome.system.proxy.https org.gnome.system.proxy.ftp org.gnome.system.proxy.socks
+ 2203     2 [kworker/u16:1]
+ 2212     2 [kworker/0:1]
+ 2257     2 [kworker/u16:2]
+ 2258  1959 tmux
+ 2260     1 tmux
+ 2261  2260 -bash
+ 2335     2 [kworker/0:0]
+ 2404     2 [kworker/1:1]
+ 2419  2261 ps -e -o pid,ppid,cmd
