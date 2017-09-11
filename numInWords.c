@@ -136,7 +136,6 @@ int main()
     ll num=0;
     scanf("%lld",&num);
     int arr[10] = {0};
-    
     splitNum(arr,num); 
    return 0;
 }
