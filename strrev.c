@@ -43,7 +43,6 @@ void parse(char *s)
 
 int main()
 {
-	//char a[] = "Rohan Pandit is a fool";
 	
 	printf("\nEnter a string \t");
 	char a[100];
