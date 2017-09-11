@@ -10,7 +10,8 @@ int main()
     system("clear");
     cout << "\nEnter number of stack subdivisions:\t";
     cin >> divs;
-    objStack.setdivs(divs);
+    objStack.setdiv(divs);
+    objStack.initTops();
 
 	do
 	{

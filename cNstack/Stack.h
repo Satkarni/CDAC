@@ -3,7 +3,7 @@
 #include<stdexcept>
 using namespace std;
 
-#define SIZE 5 
+#define SIZE 8 
 #define BOTTOM -1
 
 template<class T>
@@ -11,36 +11,43 @@ class Stack
 {
 	private:
         T arr[SIZE];
-        int top;
-        int top1;
+        int top[SIZE];
         int stackid;
-        int divs;
-
+        int div;
+    
 	public:
 	Stack();
+    void initTops();
 	bool Push(T,int);
 	T Pop(int) throw(runtime_error);
 	T Peep(int) throw(runtime_error);
 	bool IsEmpty(int);
 	bool IsFull(int);
-    void setdivs(int divs)
+    void setdiv(int div)
     {
-        if(divs != 0)
-        this->divs = divs;
+        if(div != 0)
+        this->div = div;
     }
     void print()
     {
-        cout << "\nStack1:\t" ;
-        for(int i =0;i<(SIZE+1)/2;i++)
+        for(int j=0;j<div;j++)
         {
-            cout << arr[i] << "\t" ;
+            cout << "\nStack"<<j<<":\t" ;
+            int min = j*(SIZE+1)/div;
+            int max = (j+1)*(SIZE+1)/div;
+            if(j == 0)
+            {
+                min = -1;
+                max = (SIZE-1)/div;
+            }
+            if(j == div-1)
+                max = SIZE;
+            for(int i = min;i<max;i++)
+            {
+                cout << arr[i] << "\t" ;
+            }
+            cout << endl;
         }
-        cout << "\nStack2:\t" ;
-        for(int i =(SIZE+1)/2;i<SIZE;i++)
-        {
-            cout << arr[i] << "\t" ;
-        }
-        cout << endl;
     }
 };
 

@@ -3,11 +3,21 @@
 template<class T>
 Stack<T>::Stack()
 {
-	top = BOTTOM;
-	top1 = (SIZE-1)/2;
+    for(int i=0;i<SIZE;i++)
+    {
+        top[i] = 0;
+    }
     stackid = 0;
 }
 
+template<class T>
+void Stack<T>::initTops()
+{
+    for(int i=0;i<div;i++)
+    {
+        top[i] = ((i)*(SIZE-1)/div == 0) ? -1:i*(SIZE-1)/div;
+    }
+}
 //Function to add element in stack
 template<class T>
 bool  Stack<T>::Push(T ele,int id)
@@ -18,16 +28,8 @@ bool  Stack<T>::Push(T ele,int id)
 	}
 	else
 	{
-        if(id == 0)
-        {
-            top++;
-            arr[top]= ele;
-        }
-        if(id == 1)
-        {
-            top1++;
-            arr[top1]= ele;
-        }
+        top[id]++;
+        arr[top[id]] = ele;
 		return true;
 	}
 
@@ -44,16 +46,8 @@ T Stack<T>::Pop(int id) throw(runtime_error)
 	}
 	else
 	{
-        if(id == 0)
-        {
-            elePopped = arr[top];
-            top--;
-        }
-        if(id == 1)
-        {
-            elePopped = arr[top1];
-            top1--;
-        }
+        elePopped = arr[top[id]];
+        top[id]--;
 	}
 	return elePopped;
 }
@@ -62,24 +56,15 @@ T Stack<T>::Pop(int id) throw(runtime_error)
 template<class T>
 bool Stack<T>::IsEmpty(int id)
 {
-    if(id == 0)
-        return (top == BOTTOM );
-    if(id == 1)
-        return (top1 == (SIZE-1)/2);
-
-    return false;
+    int bottom =(id==0) ? -1: id*(SIZE-1)/div;
+    return (top[id] == bottom);
 }
 
 //Function to check whether stack is full
 template<class T>
 bool Stack<T>::IsFull(int id)
 {
-    if(id == 0)
-        return (top == (SIZE-1)/2);
-    if(id == 1)
-        return (top1 == SIZE-1);
-
-    return false;
+    return (top[id]== (id+1)*(SIZE-1)/div);
 }
 
 //Function to get elemnt at top of stack
@@ -93,10 +78,7 @@ T Stack<T>::Peep(int id) throw(runtime_error)
 	}
 	else
 	{
-        if(id == 0)
-            ele= arr[top];
-        if(id == 1)
-            ele = arr[top1];
+        ele = arr[top[id]];
 	}
 	return ele;
 }
