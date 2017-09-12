@@ -14,7 +14,7 @@ public:
   bool addAtBegin(T ele);
   bool addAtEnd(T ele);
   void display();
-  void displayEvenNodes();
+  void displayDivby3();
   T deleteFromBegin();
   T deleteFromEnd();
   bool insertAt(int pos,T ele);

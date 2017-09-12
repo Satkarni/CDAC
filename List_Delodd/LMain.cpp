@@ -22,6 +22,7 @@ int main()
         cout<<"\n 7. Check for empty";
         cout<<"\n 8. Get size";
         cout<<"\n 9. Display";
+        cout<<"\n 11.Delete odd nodes";
         cout<<"\n 10. Exit";
         cout<<"\n Enter your choice:";
         cin>>choice;
@@ -119,10 +120,16 @@ int main()
                     }break;
             case 9: {
                         objList.display();
-                        objList.displayEvenNodes();
                         cin.get();
                     }break;
             case 10:{}break;
+            case 11: {
+                        objList.display();
+                        cout << "\nDeleting odd nodes\t";
+                        objList.deleteOdd();
+                        objList.display();
+                        cin.get();
+                    }break;
         }
     }while(10 != choice);
 

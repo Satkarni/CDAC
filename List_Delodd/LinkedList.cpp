@@ -104,38 +104,6 @@ void LinkedList<T>::display()
 }
 
     template <class T>
-void LinkedList<T>::displayEvenNodes()
-{
-    if(empty())
-    {
-        cout<<"\nNo items to display"<<endl;
-        return;
-    }
-    cout<<"\n Linked List Even Nodes Contents"<<endl;
-    Node<T> *t = NULL;
-    t= head;
-    // Using short circuiting 
-    while(t->GetNext() != NULL && t->GetNext()->GetNext() != NULL)
-    {
-        cout<<t->GetNext()->GetData()<<"---->";
-        t = t->GetNext()->GetNext();
-    }
-    //List only has 1 or 2 nodes
-    if(t->GetNext() != NULL)  
-    {  
-        if(t->GetNext() == tail)  
-        {  
-            t = t->GetNext();
-            cout<<t->GetData()<<"---->";
-        }
-    }
-
-    cout<<"NULL";
-
-}
-
-
-    template <class T>
 T LinkedList<T>::deleteFromBegin()
 { 
     T ele;
@@ -195,6 +163,60 @@ T LinkedList<T>::deleteFromEnd()
 
     }
     return ele;
+}
+    template <class T>
+void LinkedList<T>::deleteOdd()
+{
+    if(!empty())
+    {
+        Node<T> *t = head;
+        if(head == tail) // only 1 node in list
+        {
+            head = NULL;
+            delete tail;
+            tail= NULL;
+            count--;
+        }
+        else
+        {
+            deleteFromBegin(); 
+            Node<T> *t = head;
+            if(head == tail)
+                return;
+            while(t->GetNext()->GetNext() != tail)
+            {
+                if(t == tail)   
+                    return;
+                if(t->GetNext() == tail)
+                {
+                    t->SetData(t->GetData()+ t->GetNext()->GetData());
+                    deleteFromEnd();
+                    return;
+                }
+                if(t->GetNext()->GetNext() != NULL)
+                {
+                    Node<T>* r = t->GetNext();
+                    t->SetData(t->GetData()+ t->GetNext()->GetData());
+                    t->SetNext(t->GetNext()->GetNext());
+                    t = t->GetNext();
+                    delete r;
+                }
+            }
+            // reached last 3 nodes, need to delete next 
+            Node<T>* r = t->GetNext();
+            t->SetData(t->GetData()+ t->GetNext()->GetData());
+            t->SetNext(t->GetNext()->GetNext());
+            t = t->GetNext();
+            delete r;
+            tail = t;
+
+        }
+
+    }else
+    {
+        cout<<"\nNo items to display"<<endl;
+        return;
+    }
 }
 
     template <class T>

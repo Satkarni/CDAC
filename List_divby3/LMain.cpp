@@ -119,7 +119,7 @@ int main()
                     }break;
             case 9: {
                         objList.display();
-                        objList.displayEvenNodes();
+                        objList.displayDivby3();
                         cin.get();
                     }break;
             case 10:{}break;

@@ -104,30 +104,21 @@ void LinkedList<T>::display()
 }
 
     template <class T>
-void LinkedList<T>::displayEvenNodes()
+void LinkedList<T>::displayDivby3()
 {
     if(empty())
     {
         cout<<"\nNo items to display"<<endl;
         return;
     }
-    cout<<"\n Linked List Even Nodes Contents"<<endl;
+    cout<<"\n Linked List Contents div by 3"<<endl;
     Node<T> *t = NULL;
     t= head;
-    // Using short circuiting 
-    while(t->GetNext() != NULL && t->GetNext()->GetNext() != NULL)
+    while(t !=NULL)
     {
-        cout<<t->GetNext()->GetData()<<"---->";
-        t = t->GetNext()->GetNext();
-    }
-    //List only has 1 or 2 nodes
-    if(t->GetNext() != NULL)  
-    {  
-        if(t->GetNext() == tail)  
-        {  
-            t = t->GetNext();
-            cout<<t->GetData()<<"---->";
-        }
+        if(t->GetData()%3 == 0)
+        cout<<t->GetData()<<"---->";
+        t= t->GetNext();
     }
 
     cout<<"NULL";
