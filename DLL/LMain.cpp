@@ -11,6 +11,7 @@ LinkedList<int> objList;
 
 do
 {
+system("clear");
 cout<<"\n *********MENU************";
 cout<<"\n 1. Add at beginning";
 cout<<"\n 2. Add at end";
@@ -32,29 +33,42 @@ case 1:	{
 	int ele;
 	cout<<"\n Enter element:";
 	cin>>ele;
-	if(!objList.addAtBegin(ele))
+	if(!objList.addAtBegin(ele)){
+        
 	   cout<<"\n Insertion Failed";
-	else
+        cin.get();
+    }
+	else{
 		cout<<"\nInsertion succeded";
+        cin.get();
+    }
 	}break;
 
 case 2:	{
 	int ele;
 	cout<<"\n Enter element:";
 	cin>>ele;
-	if(!objList.addAtEnd(ele))
+	if(!objList.addAtEnd(ele)){
+
 	   cout<<"\n Insertion Failed";
-	else
+        cin.get();
+    }
+	else{
+
 		cout<<"\nInsertion succeded";
+        cin.get();
+    }
 	}break;
 
 case 3:	{
 	int no = objList.deleteFromBegin();
 		cout<<"\nDeleted Element:"<<no;;
+        cin.get();
 	}break;
 case 4:	{
 	int no = objList.deleteFromEnd();
 		cout<<"\nDeleted Element:"<<no;
+        cin.get();
 	}break;
 case 5:	{
 	int pos;
@@ -63,29 +77,49 @@ case 5:	{
 	int ele;
 	cout<<"\n Enter element:";
 	cin>>ele;
-	if(!objList.insertAt(pos,ele))
+	if(!objList.insertAt(pos,ele)){
+        
 		cout<<"\nInsertion failed, may be insufficient size";
-	else
+        cin.get();
+    }
+	else{
+
 		cout<<"\nInsertion succeded";
+        cin.get();
+    }
 	}break;
 case 6:	{
-	if(!objList.reverse())
+	if(!objList.reverse()){
+        
 		cout<<"\nReverse opeartion failed";
-	else
+        cin.get();
+    }
+	else{
+        
 		cout<<"\n List reversed";
+        cin.get();
+    }
 	}break;
 case 7: {
-	 if(objList.empty())
+	 if(objList.empty()){
+         
 		cout<<"\n List is empty";
-	 else
+        cin.get();
+     }
+	 else{
+
 		cout<<"\n List is not empty";
+        cin.get();
+     }
 	}break;
 case 8: {
 	 cout<<"\n Size ="<<objList.size();
+        cin.get();
 	}break;
 case 9: {
 	 objList.display();
 	 objList.rdisplay();
+        cin.get();
 	}break;
 case 10:{}break;
 }

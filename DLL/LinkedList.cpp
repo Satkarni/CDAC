@@ -53,8 +53,7 @@ bool LinkedList<T>::addAtBegin(T ele)
     {
         t->SetNext(head);
         t->SetPrev(NULL);
-        if(head == tail)
-            tail->SetPrev(t);
+        head->SetPrev(t); 
         head = t;
         count++;
         bSuccess = true;
@@ -221,18 +220,20 @@ bool LinkedList<T>::insertAt(int pos,T ele)
     template <class T>
 bool LinkedList<T>::reverse()
 {
-    bool bSuccess = false;
     if(!empty())
     {
         Node<T> *swp =NULL; //for swapping
         Node<T> *tmp = head;
         while(tmp != NULL)
         {
-            swp = tmp->GetNext();
-            tmp->SetNext(tmp->GetPrev());
-            tmp->SetPrev(swp);
-            tmp = tmp->GetPrev();
+           swp = tmp->GetPrev();
+           tmp->SetPrev(tmp->GetNext());
+           tmp->SetNext(swp);
+           tmp = tmp->GetPrev();
         }
+        swp = head;
+        head = tail;
+        tail = swp;
     }
-    return bSuccess;
+    return true;
 }
