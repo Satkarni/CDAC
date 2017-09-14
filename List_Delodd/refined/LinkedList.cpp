@@ -179,22 +179,38 @@ void LinkedList<T>::deleteOdd()
         }
         else
         {
-            Node<T> *odd = head;
-            Node<T> *even = odd->GetNext();
-            while(odd != NULL)
+            deleteFromBegin(); 
+            if(head == tail)
+                return;
+            Node<T> *t = head;
+            Node<T> *p = t->GetNext();
+            Node<T> *s = t->GetNext()->GetNext();
+            while(s != tail)
             {
-                if(even != NULL)
+                if(t == tail)   
+                    return;
+                if(p == tail)
                 {
-                    even->SetData(even->GetData() + odd->GetData());
-                        head = even;
-                delete odd;
-                odd = even->GetNext();
-                if(odd != NULL)
-                    even = odd->GetNext();
+                    t->SetData(t->GetData()+ p->GetData());
+                    deleteFromEnd();
+                    return;
+                }
+                if(s != NULL)
+                {
+                    Node<T>* r = t->GetNext();
+                    t->SetData(t->GetData()+ r->GetData());
+                    t->SetNext(t->GetNext()->GetNext());
+                    t = t->GetNext();
+                    delete r;
+                }
             }
-            //delete remaining node
-
-
+            // reached last 3 nodes, need to delete next 
+            Node<T>* r = t->GetNext();
+            t->SetData(t->GetData()+ r->GetData());
+            t->SetNext(t->GetNext()->GetNext());
+            t = t->GetNext();
+            delete r;
+            tail = t;
         }
 
     }else
