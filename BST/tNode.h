@@ -6,8 +6,8 @@ class tNode
 {
     private :
         T data;
-        tNode *left;
-        tNode *right;
+        tNode<T> *left;
+        tNode<T> *right;
 
     public :
         tNode();

@@ -4,7 +4,7 @@
 
 char *getLongest(char *s)
 {
-    int max=0;
+    int max = 0;
     char *l;
     char *p=strtok(s," ");
     while(p != NULL)
@@ -21,26 +21,30 @@ char *getLongest(char *s)
 
 int main()
 {
-    int max;
-    char buf[100];
-        char *longest;
+    int max = 0;
+    char *longest;
     FILE *fd = fopen("./in","r");
     if(!fd)
     {
         printf("\nCannot open file");
         exit(1);
     }
-    while(fd != EOF)
+    while(!feof(fd))
     {
-        fgets(buf,100,stdin);
-        if(strlen(getLongest(buf)) > max)
+        char buf[1000];
+        fgets(buf,1000,fd);
+        longest = getLongest(buf);
+        printf("\n%s",longest);
+        int linemax = strlen(longest);
+        printf("\n%d",linemax);
+        printf("\n%d",max);
+        if(linemax > max)
         {
-            max = strlen(getLongestbuf(buf));
-            longest = getLongest(buf);
+            max = linemax;
         }
-        
     }
 
     printf("\nLongest word is: %s\n",longest);
+    fclose(fd);
     return 0;
 }
