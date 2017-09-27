@@ -286,6 +286,8 @@ TreeNode<T>* BST<T>::getNodeParent(T val)
             tmp2 = rchild->GetData();
         if(tmp1 == val || tmp2 == val)
             return temp;
+        if(val == root->GetData())
+            return NULL;
         if (val < temp->GetData())
         {
             temp = temp->GetLeft();   
