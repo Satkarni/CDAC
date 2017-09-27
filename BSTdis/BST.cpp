@@ -1,7 +1,9 @@
-#include"BST.h"
+#include "BST.h"
 #include <queue>
-#include<iostream>
-#include<stdexcept>
+#include <iostream>
+#include <iomanip>
+#include <stdexcept>
+
 using namespace std;
     template<class T>
 BST<T>::BST()
@@ -170,7 +172,9 @@ void BST<T>::delNode(T key)
     template <class T>
 void BST<T>::display(TreeNode<T> *t)
 {
-    int popped=0,level=0;
+    int popped=0,level=0,empty=0;
+    int height = HeightOfTree(t); 
+    int MAXW = 3*(1<<height);
     queue<TreeNode<T>*> q;
     if(t == NULL)
         return;
@@ -181,24 +185,39 @@ void BST<T>::display(TreeNode<T> *t)
         while(!q.empty())
         {
             t = q.front();
-            if(t != NULL)
+            if(t == NULL)
+            {
+                q.push(NULL);
+                q.push(NULL);
+            }else
             {
                 q.push(t->GetLeft());
                 q.push(t->GetRight());
-                cout << t->GetData() << " ";
             }
-            else
-                cout << "_" << " ";
+                cout << setw( MAXW/(1 + (1<<level)) );
+            if(t != NULL)
+            {
+                cout << t->GetData();
+                popped++;
+            }
+            else 
+            {
+                empty++;
+                cout << "_" ;
+            }
             q.pop();
-            popped++;
-            if(popped >= (1<<level))
+            if(popped + empty >= (1<<level))
             {
                 popped = 0;
+                empty = 0;
                 level++;
+                if(level == height)
+                    break;
                 cout << endl;
             }
         }
     }
+    cout << endl;
 }
 
 

@@ -15,13 +15,14 @@ int  main()
     do
     {
         system("clear");
+        BST<int>::display(objBST.GetRootNode());
         cout<<"\n1. Insert"
             <<"\n2. InOrder"
             <<"\n3. PreOrder"
             <<"\n4. PostOrder"
             <<"\n5. Height"
             <<"\n7. Delete a node"
-            <<"\n8. Display"
+            //<<"\n8. Display"
             <<"\n6. Exit"
             <<"\n\nEnter Your Choice : ";
         cin>>ch;
@@ -59,12 +60,10 @@ int  main()
                         int height = BST<int>::HeightOfTree(objBST.GetRootNode());
                         cout<<"Height of tree:"<<height<<endl;
                         cin.get();
+                        cin.get();
                     }
                     break;
-            case 8:
-                    BST<int>::display(objBST.GetRootNode());
-                    cin.get();
-                    cin.get();
+            case 6:
                     break;
             default:cout<<"Invalid Choice";
                     cin.get();
