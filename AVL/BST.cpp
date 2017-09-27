@@ -294,3 +294,55 @@ int  BST<T>::HeightOfTree(TreeNode<T>*  temp)
     }
 }
 
+
+    template <class T>
+void BST<T>::display(TreeNode<T> *t)
+{
+    int popped=0,level=0,empty=0;
+    int height = HeightOfTree(t); 
+    int MAXW = 3*(1<<height);
+    queue<TreeNode<T>*> q;
+    if(t == NULL)
+        return;
+    else
+    {
+        cout << "\nLevel order traversal:\n";
+        q.push(t);
+        while(!q.empty())
+        {
+            t = q.front();
+            if(t == NULL)
+            {
+                q.push(NULL);
+                q.push(NULL);
+            }else
+            {
+                q.push(t->GetLeft());
+                q.push(t->GetRight());
+            }
+                cout << setw( MAXW/(1 + (1<<level)) );
+            if(t != NULL)
+            {
+                cout << t->GetData();
+                popped++;
+            }
+            else 
+            {
+                empty++;
+                cout << "_" ;
+            }
+            q.pop();
+            if(popped + empty >= (1<<level))
+            {
+                popped = 0;
+                empty = 0;
+                level++;
+                if(level == height)
+                    break;
+                cout << endl;
+            }
+        }
+    }
+    cout << endl;
+}
+
