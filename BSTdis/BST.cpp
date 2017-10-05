@@ -1,6 +1,9 @@
-#include"BST.h"
-#include<iostream>
-#include<stdexcept>
+#include "BST.h"
+#include <queue>
+#include <iostream>
+#include <iomanip>
+#include <stdexcept>
+
 using namespace std;
     template<class T>
 BST<T>::BST()
@@ -120,8 +123,15 @@ void BST<T>::Insert(T iData)
 void BST<T>::delNode(T key)
 {
     TreeNode<T> *ndel = getNode(key);
-    TreeNode<T> *par = getNodeParent(key);
-    TreeNode<T> *spar,*s,*c=NULL;
+    TreeNode<T> *par;
+    if(!ndel)
+    {
+        par = NULL;
+    }else
+    {
+        par = getNodeParent(key);
+    }
+    TreeNode<T> *spar=NULL,*s=NULL,*c=NULL;
     if(!ndel)
     {
         cout << "\nNode not found\n";
@@ -159,7 +169,56 @@ void BST<T>::delNode(T key)
 }
 
 
-
+    template <class T>
+void BST<T>::display(TreeNode<T> *t)
+{
+    int popped=0,level=0,empty=0;
+    int height = HeightOfTree(t); 
+    int MAXW = 3*(1<<height);
+    queue<TreeNode<T>*> q;
+    if(t == NULL)
+        return;
+    else
+    {
+        cout << "\nLevel order traversal:\n";
+        q.push(t);
+        while(!q.empty())
+        {
+            t = q.front();
+            if(t == NULL)
+            {
+                q.push(NULL);
+                q.push(NULL);
+            }else
+            {
+                q.push(t->GetLeft());
+                q.push(t->GetRight());
+            }
+                cout << setw( MAXW/(1 + (1<<level)) );
+            if(t != NULL)
+            {
+                cout << t->GetData();
+                popped++;
+            }
+            else 
+            {
+                empty++;
+                cout << "_" ;
+            }
+            q.pop();
+            if(popped + empty >= (1<<level))
+            {
+                popped = 0;
+                empty = 0;
+                level++;
+                if(level == height)
+                    break;
+                cout << endl;
+            }
+        }
+    }
+    cout << endl;
+}
 
 
     template<class T>
@@ -212,11 +271,11 @@ TreeNode<T>* BST<T>::getNode(T val)
 TreeNode<T>* BST<T>::getNodeParent(T val)
 {
     TreeNode<T> *temp = root;
-    TreeNode<T> *lchild,*rchild;
+    TreeNode<T> *lchild=NULL,*rchild=NULL;
     if(temp != NULL)
     {
-         lchild = temp->GetLeft();
-         rchild = temp->GetRight();
+        lchild = temp->GetLeft();
+        rchild = temp->GetRight();
     }
     while(!(lchild == NULL && rchild == NULL))
     {
@@ -227,6 +286,8 @@ TreeNode<T>* BST<T>::getNodeParent(T val)
             tmp2 = rchild->GetData();
         if(tmp1 == val || tmp2 == val)
             return temp;
+        if(val == root->GetData())
+            return NULL;
         if (val < temp->GetData())
         {
             temp = temp->GetLeft();   
@@ -292,57 +353,5 @@ int  BST<T>::HeightOfTree(TreeNode<T>*  temp)
     {
         return (r + 1);
     }
-}
-
-
-    template <class T>
-void BST<T>::display(TreeNode<T> *t)
-{
-    int popped=0,level=0,empty=0;
-    int height = HeightOfTree(t); 
-    int MAXW = 3*(1<<height);
-    queue<TreeNode<T>*> q;
-    if(t == NULL)
-        return;
-    else
-    {
-        cout << "\nLevel order traversal:\n";
-        q.push(t);
-        while(!q.empty())
-        {
-            t = q.front();
-            if(t == NULL)
-            {
-                q.push(NULL);
-                q.push(NULL);
-            }else
-            {
-                q.push(t->GetLeft());
-                q.push(t->GetRight());
-            }
-                cout << setw( MAXW/(1 + (1<<level)) );
-            if(t != NULL)
-            {
-                cout << t->GetData();
-                popped++;
-            }
-            else 
-            {
-                empty++;
-                cout << "_" ;
-            }
-            q.pop();
-            if(popped + empty >= (1<<level))
-            {
-                popped = 0;
-                empty = 0;
-                level++;
-                if(level == height)
-                    break;
-                cout << endl;
-            }
-        }
-    }
-    cout << endl;
 }
 

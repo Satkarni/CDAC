@@ -120,8 +120,15 @@ void BST<T>::Insert(T iData)
 void BST<T>::delNode(T key)
 {
     TreeNode<T> *ndel = getNode(key);
-    TreeNode<T> *par = getNodeParent(key);
-    TreeNode<T> *spar,*s,*c=NULL;
+    TreeNode<T> *par;
+    if(!ndel)
+    {
+        par = NULL;
+    }else
+    {
+        par = getNodeParent(key);
+    }
+    TreeNode<T> *spar=NULL,*s=NULL,*c=NULL;
     if(!ndel)
     {
         cout << "\nNode not found\n";
@@ -212,7 +219,7 @@ TreeNode<T>* BST<T>::getNode(T val)
 TreeNode<T>* BST<T>::getNodeParent(T val)
 {
     TreeNode<T> *temp = root;
-    TreeNode<T> *lchild,*rchild;
+    TreeNode<T> *lchild=NULL,*rchild=NULL;
     if(temp != NULL)
     {
          lchild = temp->GetLeft();

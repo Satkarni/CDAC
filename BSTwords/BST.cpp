@@ -116,48 +116,6 @@ void BST<T>::Insert(T iData)
     }
 }
 
-    template<class T>
-void BST<T>::delNode(T key)
-{
-    TreeNode<T> *ndel = getNode(key);
-    TreeNode<T> *par = getNodeParent(key);
-    TreeNode<T> *spar,*s,*c=NULL;
-    if(!ndel)
-    {
-        cout << "\nNode not found\n";
-        return;
-    }else
-    {
-        if(ndel->GetLeft() != NULL && ndel->GetRight() != NULL) // has 2 children
-        {
-            spar = ndel;
-            s = ndel->GetRight();
-            while(s->GetLeft() != NULL) // find next inorder successor
-            {
-                spar = s;
-                s = s->GetLeft();
-            }
-            ndel->SetData(s->GetData());
-            ndel = s;
-            par = spar;
-        }
-        if(ndel->GetLeft() != NULL)
-            c = ndel->GetLeft();
-        else
-            c = ndel->GetRight();
-
-        if(par==NULL)   //root node to be deleted;
-        {
-            root = c;
-        }
-        else if(ndel == par->GetLeft())
-            par->SetLeft(c);
-        else
-            par->SetRight(c);
-        delete ndel;
-    }
-}
-
 
 
 
@@ -185,63 +143,7 @@ bool BST<T>::Search(T val)
 
     return false;
 }
-    template<class T>
-TreeNode<T>* BST<T>::getNode(T val)
-{
-    TreeNode<T> *temp = root;
 
-    while (temp != NULL) 
-    {
-        if (val == temp->GetData()) 
-        {
-            return temp;
-        } 
-        else if (val < temp->GetData())
-        {
-            temp = temp->GetLeft();   
-        } 
-        else
-        {
-            temp = temp->GetRight();
-        }
-    } 
-
-    return NULL;
-}
-    template<class T>
-TreeNode<T>* BST<T>::getNodeParent(T val)
-{
-    TreeNode<T> *temp = root;
-    TreeNode<T> *lchild,*rchild;
-    if(temp != NULL)
-    {
-         lchild = temp->GetLeft();
-         rchild = temp->GetRight();
-    }
-    while(!(lchild == NULL && rchild == NULL))
-    {
-        T tmp1,tmp2;
-        if(lchild != NULL) 
-            tmp1 = lchild->GetData();
-        if(rchild != NULL) 
-            tmp2 = rchild->GetData();
-        if(tmp1 == val || tmp2 == val)
-            return temp;
-        if (val < temp->GetData())
-        {
-            temp = temp->GetLeft();   
-            lchild = temp->GetLeft();
-            rchild = temp->GetRight();            
-        } 
-        else
-        {
-            temp = temp->GetRight();
-            lchild = temp->GetLeft();
-            rchild = temp->GetRight();            
-        }
-    }
-    return NULL;
-}
 
 
     template<class T>
@@ -292,57 +194,6 @@ int  BST<T>::HeightOfTree(TreeNode<T>*  temp)
     {
         return (r + 1);
     }
-}
 
-
-    template <class T>
-void BST<T>::display(TreeNode<T> *t)
-{
-    int popped=0,level=0,empty=0;
-    int height = HeightOfTree(t); 
-    int MAXW = 3*(1<<height);
-    queue<TreeNode<T>*> q;
-    if(t == NULL)
-        return;
-    else
-    {
-        cout << "\nLevel order traversal:\n";
-        q.push(t);
-        while(!q.empty())
-        {
-            t = q.front();
-            if(t == NULL)
-            {
-                q.push(NULL);
-                q.push(NULL);
-            }else
-            {
-                q.push(t->GetLeft());
-                q.push(t->GetRight());
-            }
-                cout << setw( MAXW/(1 + (1<<level)) );
-            if(t != NULL)
-            {
-                cout << t->GetData();
-                popped++;
-            }
-            else 
-            {
-                empty++;
-                cout << "_" ;
-            }
-            q.pop();
-            if(popped + empty >= (1<<level))
-            {
-                popped = 0;
-                empty = 0;
-                level++;
-                if(level == height)
-                    break;
-                cout << endl;
-            }
-        }
-    }
-    cout << endl;
 }
 
